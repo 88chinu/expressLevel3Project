@@ -1,12 +1,18 @@
-const express = require("express")
+const express = require("express");
+// *** ADD ***
+const v1Router = require("./v1/routes");
 
-const app = express()
-const PORT = process.env.PORT || 7000
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-app.get("/",(req,res) => {
-    res.send ("<h2>Well-Come to Crossfit-wod")
-})
+// *** REMOVE ***
+app.get("/", (req, res) => {
+  res.send("<h2>It's Working!</h2>");
+});
+
+// *** ADD ***
+app.use("/api/v1", v1Router);
 
 app.listen(PORT, () => {
-    console.log(`This app is opening on PORT ${PORT}`)
-})
+  console.log(`API is listening on port ${PORT}`);
+});
